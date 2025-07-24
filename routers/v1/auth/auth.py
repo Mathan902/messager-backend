@@ -17,3 +17,8 @@ authenticationCore=AuthenticationCore()
 def signin(credentials: Annotated[AuthSignInCredentials, Body(embed=True)]):
     token = authenticationCore.create_token({"email" : credentials.email , "password": credentials.password})
     return {"message": {"token" : token}}
+
+@router.post("/signup")
+def signin(credentials: Annotated[AuthSignInCredentials, Body(embed=True)]):
+    token = authenticationCore.create_token({"email" : credentials.email , "password": credentials.password})
+    return {"message": {"token" : token}}
