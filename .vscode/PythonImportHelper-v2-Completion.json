@@ -1,0 +1,221 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "BaseHTTPMiddleware",
+        "importPath": "starlette.middleware.base",
+        "description": "starlette.middleware.base",
+        "isExtraImport": true,
+        "detail": "starlette.middleware.base",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "starlette.requests",
+        "description": "starlette.requests",
+        "isExtraImport": true,
+        "detail": "starlette.requests",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydrantic",
+        "description": "pydrantic",
+        "isExtraImport": true,
+        "detail": "pydrantic",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "AuthenticationCore",
+        "importPath": "internal.auth.auth",
+        "description": "internal.auth.auth",
+        "isExtraImport": true,
+        "detail": "internal.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "importPath": "routers.v1.auth",
+        "description": "routers.v1.auth",
+        "isExtraImport": true,
+        "detail": "routers.v1.auth",
+        "documentation": {}
+    },
+    {
+        "label": "AuthMiddleware",
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "isExtraImport": true,
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "AuthenticationCore",
+        "kind": 6,
+        "importPath": "internal.auth.auth",
+        "description": "internal.auth.auth",
+        "peekOfCode": "class AuthenticationCore:\n    def create_token(self , data: dict, expires_delta: timedelta | None = None):\n        to_encode = data.copy()\n        expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))\n        to_encode.update({\"exp\": expire})\n        return jwt.encode(to_encode, AUTH_SECERT_KEY, algorithm=AUTH_ALGORITHM)\n    def verify_token(self , token: str):\n        try:\n            payload = jwt.decode(token, AUTH_SECERT_KEY, algorithms=[AUTH_ALGORITHM])\n            return payload",
+        "detail": "internal.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_SECERT_KEY",
+        "kind": 5,
+        "importPath": "internal.auth.auth",
+        "description": "internal.auth.auth",
+        "peekOfCode": "AUTH_SECERT_KEY = os.getenv(\"AUTH_SECERT_KEY\")\nAUTH_ALGORITHM = \"HS256\"\nclass AuthenticationCore:\n    def create_token(self , data: dict, expires_delta: timedelta | None = None):\n        to_encode = data.copy()\n        expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))\n        to_encode.update({\"exp\": expire})\n        return jwt.encode(to_encode, AUTH_SECERT_KEY, algorithm=AUTH_ALGORITHM)\n    def verify_token(self , token: str):\n        try:",
+        "detail": "internal.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_ALGORITHM",
+        "kind": 5,
+        "importPath": "internal.auth.auth",
+        "description": "internal.auth.auth",
+        "peekOfCode": "AUTH_ALGORITHM = \"HS256\"\nclass AuthenticationCore:\n    def create_token(self , data: dict, expires_delta: timedelta | None = None):\n        to_encode = data.copy()\n        expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))\n        to_encode.update({\"exp\": expire})\n        return jwt.encode(to_encode, AUTH_SECERT_KEY, algorithm=AUTH_ALGORITHM)\n    def verify_token(self , token: str):\n        try:\n            payload = jwt.decode(token, AUTH_SECERT_KEY, algorithms=[AUTH_ALGORITHM])",
+        "detail": "internal.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "AuthMiddleware",
+        "kind": 6,
+        "importPath": "middleware.auth_middleware",
+        "description": "middleware.auth_middleware",
+        "peekOfCode": "class AuthMiddleware(BaseHTTPMiddleware):\n    async def dispatch(self, request: Request, call_next):\n        response = await call_next(request)\n        return response",
+        "detail": "middleware.auth_middleware",
+        "documentation": {}
+    },
+    {
+        "label": "UserModel",
+        "kind": 6,
+        "importPath": "models.user_model",
+        "description": "models.user_model",
+        "peekOfCode": "class UserModel(BaseModel):\n    name : str\n    email : str\n    password : str\n    role : str = \"user\"",
+        "detail": "models.user_model",
+        "documentation": {}
+    },
+    {
+        "label": "AuthSignInCredentials",
+        "kind": 6,
+        "importPath": "routers.v1.auth.auth",
+        "description": "routers.v1.auth.auth",
+        "peekOfCode": "class AuthSignInCredentials(BaseModel):\n    email: str\n    password: str\nrouter = APIRouter(\n    tags=[\"Authentication\"]\n)\nauthenticationCore=AuthenticationCore()\n@router.post(\"/signin\")\ndef signin(credentials: Annotated[AuthSignInCredentials, Body(embed=True)]):\n    token = authenticationCore.create_token({\"email\" : credentials.email , \"password\": credentials.password})",
+        "detail": "routers.v1.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "signin",
+        "kind": 2,
+        "importPath": "routers.v1.auth.auth",
+        "description": "routers.v1.auth.auth",
+        "peekOfCode": "def signin(credentials: Annotated[AuthSignInCredentials, Body(embed=True)]):\n    token = authenticationCore.create_token({\"email\" : credentials.email , \"password\": credentials.password})\n    return {\"message\": {\"token\" : token}}",
+        "detail": "routers.v1.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routers.v1.auth.auth",
+        "description": "routers.v1.auth.auth",
+        "peekOfCode": "router = APIRouter(\n    tags=[\"Authentication\"]\n)\nauthenticationCore=AuthenticationCore()\n@router.post(\"/signin\")\ndef signin(credentials: Annotated[AuthSignInCredentials, Body(embed=True)]):\n    token = authenticationCore.create_token({\"email\" : credentials.email , \"password\": credentials.password})\n    return {\"message\": {\"token\" : token}}",
+        "detail": "routers.v1.auth.auth",
+        "documentation": {}
+    },
+    {
+        "label": "welcome",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def welcome():\n    return \"Welcome to messager\"\napp.add_middleware(AuthMiddleware)\napp.include_router(auth.router , prefix=\"/v1/auth\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef welcome():\n    return \"Welcome to messager\"\napp.add_middleware(AuthMiddleware)\napp.include_router(auth.router , prefix=\"/v1/auth\")",
+        "detail": "app",
+        "documentation": {}
+    }
+]

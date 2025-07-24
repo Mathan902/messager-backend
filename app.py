@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routers.auth import auth
+from routers.v1.auth import auth
+from middleware.auth_middleware import AuthMiddleware
 
 app = FastAPI()
 
@@ -7,4 +8,6 @@ app = FastAPI()
 def welcome():
     return "Welcome to messager"
 
-app.include_router(auth.router)
+app.add_middleware(AuthMiddleware)
+
+app.include_router(auth.router , prefix="/v1/auth")
